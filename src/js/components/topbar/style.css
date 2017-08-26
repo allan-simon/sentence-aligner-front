@@ -1,0 +1,51 @@
+:root {
+    --white: #F5F5F5;
+    --light-grey: #ECECEC;
+    --grey: #DEDEDE;
+    --black: #212121;
+    --border-width: 1px;
+    --main-padding: 48px;
+    --menu-padding: 8px;
+    --header-height: 64px;
+    --collapsed-menu-width: 64px;
+}
+
+.element_root {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background-color: var(--white);
+    position: fixed;
+}
+
+.shadow {
+    box-shadow: 8px 8px 24px -8px var(--black);
+}
+
+.navbar {
+    composes: shadow;
+    z-index: 2;
+    height: var(--header-height);
+    width: 100%;
+    background-color: var(--white);
+    border-bottom: var(--border-width) solid var(--grey);
+    padding: var(--menu-padding) var(--main-padding) var(--menu-padding) calc(var(--collapsed-menu-width) + var(--main-padding));
+    float: right;
+    position: fixed;
+}
+
+.navbar > * {
+    margin: auto 0;
+    vertical-align: middle;
+}
+
+.navbar > h1 {
+    display: inline-block;
+}
+
+.navbar > button {
+    height: 32px;
+    float: right;
+    margin: 8px auto;
+}
+

@@ -2,9 +2,11 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
 
+import Layout from '../layout';
+
 const App = () => {
     return (
-        <span>lol</span>
+        <Layout>lol</Layout>
     );
 };
 
