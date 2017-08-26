@@ -1,0 +1,13 @@
+# IntelliJ project files
+.idea/
+*.iml
+
+# Dependencies
+node_modules/
+
+# Built resources
+dist/
+doc/
+
+# vagrant
+.vagrant

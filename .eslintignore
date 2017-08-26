@@ -1,0 +1,3 @@
+# Ignore all built files, see https://babeljs.io/docs/usage/babelrc/ for description
+
+dist/**/*.js
