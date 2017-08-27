@@ -22,6 +22,18 @@
     line-height: 32px;
 }
 
+/* active and inactive, composing root_element */
+
+.active_tab {
+    composes: root_element;
+    border-right: 4px solid var(--blue);
+    background-color: var(--grey);
+}
+
+.inactive_tab {
+    composes: root_element;
+}
+
 .icon_box {
     float: right;
     width: 32px;
@@ -31,9 +43,4 @@
 
 .icon_box > img {
     max-height: 100%;
-}
-
-.root_element:first-of-type {
-    border-right: 4px solid var(--blue);
-    background-color: var(--grey);
 }

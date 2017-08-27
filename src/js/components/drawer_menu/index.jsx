@@ -28,10 +28,13 @@ const DrawerMenu = ({ collapsed_menu, dispatch }) => {
                 <DrawerMenuItem
                     icon_path='/img/home.svg'
                     title='Home'
+                    route_name='/'
+
                 />
                 <DrawerMenuItem
                     icon_path='/img/list.svg'
                     title='Sentences list'
+                    route_name='/sentences'
                 />
             </ul>
         </nav>
