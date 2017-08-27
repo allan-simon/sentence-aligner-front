@@ -1,0 +1,89 @@
+:root {
+    --white: #F5F5F5;
+    --grey: #DEDEDE;
+    --dark-grey: #C0C0C0;
+    --black: #212121;
+    --blue: #009FE3;
+    --border-width: 1px;
+    --header-height: 64px;
+    --collapsed-menu-width: 64px;
+    --expanded-menu-width: 200px;
+}
+
+.shadow {
+    box-shadow: 8px 8px 24px -8px var(--black);
+}
+
+.menu {
+    composes: shadow;
+    height: 100%;
+    border-right: var(--border-width) solid var(--grey);
+    z-index: 3;
+    position: fixed;
+    background-color: var(--white);
+    width: var(--expanded-menu-width);
+    transition: left .75s ease-in-out;
+    text-align: center;
+}
+
+.menu button {
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    background-color: var(--grey);
+    z-index: 4;
+}
+
+.expanded {
+    composes: menu;
+    left: 0;
+}
+
+.collapsed {
+    composes: menu;
+    left: calc(var(--collapsed-menu-width) - var(--expanded-menu-width));
+}
+
+.smart_hide {
+    text-align: right;
+    padding: 24px;
+    height: var(--header-height);
+    opacity: 0;
+    transition: opacity .75s ease-in-out;
+}
+
+.expanded .smart_hide {
+    opacity: 100;
+}
+
+.submenu {
+    padding: 0;
+    margin-top: 0;
+    list-style: none;
+}
+
+.submenu_item {
+    height: 32px;
+    text-align: left;
+    padding: 8px 16px;
+    transition: width .75s ease-in-out;
+    width: var(--expanded-menu-width);
+    border-right: 4px solid var(--dark-grey);
+}
+
+.submenu_item:hover {
+    cursor: pointer;
+}
+
+.submenu_icon {
+    float: right;
+    width: 26px;
+    text-align: center;
+}
+
+.submenu_item:first-of-type {
+    border-right: 4px solid var(--blue);
+    background-color: var(--grey);
+}

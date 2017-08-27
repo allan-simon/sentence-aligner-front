@@ -1,0 +1,39 @@
+:root {
+    --grey: #DEDEDE;
+    --dark-grey: #C0C0C0;
+    --blue: #009FE3;
+    --expanded-menu-width: 200px;
+}
+
+.root_element {
+    height: 48px;
+    text-align: left;
+    padding: 8px 12px 8px 16px;
+    transition: width .75s ease-in-out;
+    width: var(--expanded-menu-width);
+    border-right: 4px solid var(--dark-grey);
+}
+
+.root_element:hover {
+    cursor: pointer;
+}
+
+.title {
+    line-height: 32px;
+}
+
+.icon_box {
+    float: right;
+    width: 32px;
+    max-height: 100%;
+    text-align: center;
+}
+
+.icon_box > img {
+    max-height: 100%;
+}
+
+.root_element:first-of-type {
+    border-right: 4px solid var(--blue);
+    background-color: var(--grey);
+}

@@ -6,10 +6,12 @@ import { combineReducers } from 'redux';
 
 import configureStore from './reducers/configure_store';
 import App from './components/app';
+import menu_reducer from './components/drawer_menu/reducer';
 
 const initial_state = {};
 const combined_reducers = combineReducers(
     {
+        'collapsed_menu' : menu_reducer
     }
 );
 
