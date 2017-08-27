@@ -8,18 +8,18 @@ const AppRouter = ({ history }) => {
         'path' : '/',
         'component' : Layout,
         'indexRoute' : {
-            'component' : Card
+            'component' : Card,
         },
         'childRoutes' : [
             {
                 'path' : 'error',
-                'component' : Card
+                'component' : Card,
             },
             {
                 'path' : '*',
-                'component' : Card
-            }
-        ]
+                'component' : Card,
+            },
+        ],
     };
 
     return (
@@ -31,7 +31,7 @@ const AppRouter = ({ history }) => {
 };
 
 AppRouter.propTypes = {
-    'history' : React.PropTypes.object
+    'history' : React.PropTypes.object,
 };
 
 export default AppRouter;

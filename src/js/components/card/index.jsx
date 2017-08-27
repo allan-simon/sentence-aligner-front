@@ -2,16 +2,12 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
 
-const Card = ({ children }) => {
+const Card = () => {
     return (
-        <div className={ style.card }>
-            { children }
-        </div>
+        <div className={ style.card }/>
     );
 };
 
-Card.propTypes = {
-    'children' : React.PropTypes.element.isRequired
-};
+Card.propTypes = {};
 
 export default CSSModules(Card, style);

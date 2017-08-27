@@ -13,7 +13,7 @@ const DrawerMenuItem = ({
     path,
 
     // Path this menu goes to
-    route_name
+    route_name,
 }) => {
     const go_to = () => {
         dispatch(push(route_name));
@@ -44,7 +44,7 @@ DrawerMenuItem.propTypes = {
 
 const map_state_to_props = ({ routing }) => {
     return {
-        'path' : routing.locationBeforeTransitions.pathname
+        'path' : routing.locationBeforeTransitions.pathname,
     };
 };
 

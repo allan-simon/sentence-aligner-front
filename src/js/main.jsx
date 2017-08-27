@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import { hashHistory } from 'react-router';
 import {
     routerReducer,
-    syncHistoryWithStore
+    syncHistoryWithStore,
 } from 'react-router-redux';
 
 import '../index.css';
@@ -18,7 +18,7 @@ const initial_state = {};
 const combined_reducers = combineReducers(
     {
         'collapsed_menu' : menu_reducer,
-        'routing' : routerReducer
+        'routing' : routerReducer,
     }
 );
 

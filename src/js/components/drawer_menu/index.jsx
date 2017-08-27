@@ -8,7 +8,7 @@ import DrawerMenuItem from './drawer_menu_item';
 const DrawerMenu = ({ collapsed_menu, dispatch }) => {
     const toggle_menu = () => {
         const action = {
-            'type' : menu_actions.TOGGLE_MENU_ACTION
+            'type' : menu_actions.TOGGLE_MENU_ACTION,
         };
 
         dispatch(action);
@@ -43,12 +43,12 @@ const DrawerMenu = ({ collapsed_menu, dispatch }) => {
 
 DrawerMenu.propTypes = {
     'collapsed_menu' : React.PropTypes.bool.isRequired,
-    'dispatch' : React.PropTypes.func.isRequired
+    'dispatch' : React.PropTypes.func.isRequired,
 };
 
 const map_state_to_props = ({ collapsed_menu }) => {
     return {
-        collapsed_menu
+        collapsed_menu,
     };
 };
 

@@ -212,8 +212,8 @@
         "camelcase": 0,
         "capitalized-comments": 1,
         "comma-dangle": [
-            1,
-            "never"
+            "error",
+            "always-multiline"
         ],
         "comma-spacing": [
             1,
