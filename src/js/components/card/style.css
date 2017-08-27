@@ -1,0 +1,22 @@
+:root {
+    --white: #F5F5F5;
+    --grey: #BDBDBD;
+    --black: #212121;
+    --card-padding: 32px;
+}
+
+.shadow {
+    box-shadow: 8px 8px 24px -8px var(--black);
+}
+
+.card {
+    composes: shadow;
+    border: 1px solid var(--grey);
+    padding: var(--card-padding);
+    background-color: var(--white);
+    height: 100%;
+}
+
+.card + .card {
+    margin-top: var(--card-padding);
+}

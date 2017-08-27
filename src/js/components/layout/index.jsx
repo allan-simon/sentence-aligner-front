@@ -8,9 +8,11 @@ const Layout = ({ children }) => {
     return (
         <div className={ style.element_root }>
             <DrawerMenu/>
-            <TopBar/>
-            <div>
-                { children }
+            <div className={ style.main_container_root }>
+                <TopBar/>
+                <div>
+                    { children }
+                </div>
             </div>
         </div>
     );

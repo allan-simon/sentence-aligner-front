@@ -1,3 +1,39 @@
+:root {
+    --white: #F5F5F5;
+    --light-grey: #ECECEC;
+    --grey: #DEDEDE;
+    --black: #212121;
+    --border-width: 1px;
+    --main-padding: 48px;
+    --menu-padding: 8px;
+    --header-height: 64px;
+    --collapsed-menu-width: 64px;
+}
+
 .element_root {
     height: 100%;
+}
+
+.main_container_root {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background-color: var(--white);
+    position: fixed;
+}
+
+.main_container_root > div {
+    z-index: 1; /* so that it will be below the topbar */
+    min-height: calc(100% - var(--header-height));
+    max-height: calc(100% - var(--header-height));
+    background-color: var(--light-grey);
+    padding:
+        var(--main-padding)
+        var(--main-padding)
+        var(--main-padding)
+        calc(var(--main-padding) + calc(var(--collapsed-menu-width)))
+    ;
+    overflow-y: auto;
+    position: relative;
+    top: var(--header-height);
 }

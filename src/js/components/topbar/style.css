@@ -10,14 +10,6 @@
     --collapsed-menu-width: 64px;
 }
 
-.element_root {
-    z-index: 2;
-    height: 100%;
-    width: 100%;
-    background-color: var(--white);
-    position: fixed;
-}
-
 .shadow {
     box-shadow: 8px 8px 24px -8px var(--black);
 }
@@ -48,4 +40,3 @@
     float: right;
     margin: 8px auto;
 }
-
