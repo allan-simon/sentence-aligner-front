@@ -27,7 +27,7 @@
     "envify": "^4.0.0",
     "es6-promise": "^4.0.5",
     "eslint": "^3.13.1",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-react": "^7.4.0",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.0.0",
     "gulp-esdoc-stream": "^0.1.0",
