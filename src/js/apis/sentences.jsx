@@ -8,6 +8,9 @@ const Sentences = reduxApi(
             'url' : `${ API_URL }/sentences`,
             'transformer' : transformers.array,
         },
+        'one' : {
+            'url' : `${ API_URL }/sentences/:id`,
+        },
     }
 );
 

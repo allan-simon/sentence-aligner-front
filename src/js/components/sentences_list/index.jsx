@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
@@ -29,7 +30,9 @@ const SentencesList = ({ sentences_list }) => {
                                     return (
                                         <tr key={ sentence.id }>
                                             <td>
-                                                { sentence.content }
+                                                <Link to={ "/sentences/" + sentence.id }>
+                                                    { sentence.text }
+                                                </Link>
                                             </td>
                                         </tr>
                                     );

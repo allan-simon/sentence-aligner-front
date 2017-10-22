@@ -22,6 +22,7 @@ const combined_reducers = combineReducers(
         'routing' : routerReducer,
         'sentences' : combineReducers({
             'list' : SentencesAPI.reducers.list,
+            'one' : SentencesAPI.reducers.one,
         }),
     }
 );

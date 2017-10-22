@@ -1,0 +1,53 @@
+:root {
+    --white: #F5F5F5;
+    --light-grey: #ECECEC;
+    --grey: #DEDEDE;
+    --dark-grey: #C0C0C0;
+    --black: #212121;
+    --blue: #009FE3;
+    --dark-blue: #0F2639;
+    --card-padding: 32px;
+}
+
+div p {
+    margin-top: 0;
+}
+
+.sentences_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sentences_table thead {
+    border: 1px solid var(--blue);
+}
+
+.sentences_table tbody {
+    border: 1px solid var(--dark-grey);
+}
+
+.sentences_table tr > th {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    text-align: center;
+    padding: 8px 24px;
+    vertical-align: middle;
+}
+
+.sentences_table tr > th + th {
+    border-left: 1px solid var(--white);
+}
+
+.sentences_table tr > td {
+    padding: 8px 24px;
+    vertical-align: middle;
+}
+
+.sentences_table tr > td + td {
+    border-left: 1px solid var(--dark-grey);
+}
+
+.sentences_table tr:nth-child(odd) td {
+    background-color: var(--light-grey);
+}

@@ -3,11 +3,18 @@ import { Router } from 'react-router';
 import Layout from '../layout';
 import Card from '../card';
 import SentencesList from '../sentences_list';
+import OneSentence from '../one_sentence';
 import SentencesAPI from '../../apis/sentences.jsx';
 
 const AppRouter = ({ dispatch, history }) => {
     const fetch_sentences_list = () => {
         dispatch(SentencesAPI.actions.list());
+    };
+
+    const fetch_one_sentence = (nextState) => {
+        const { id } = nextState.params;
+
+        dispatch(SentencesAPI.actions.one({ 'id' : id }));
     };
 
     const routes_config = {
@@ -20,6 +27,11 @@ const AppRouter = ({ dispatch, history }) => {
             {
                 'path' : 'error',
                 'component' : Card,
+            },
+            {
+                'path' : 'sentences/:id',
+                'onEnter' : fetch_one_sentence,
+                'component' : OneSentence,
             },
             {
                 'path' : 'sentences',
