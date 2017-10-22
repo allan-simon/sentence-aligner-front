@@ -35,7 +35,7 @@ const DrawerMenuItem = ({
 };
 
 DrawerMenuItem.propTypes = {
-    'dispatch' : React.PropTypes.func,
+    'dispatch' : React.PropTypes.func.isRequired,
     'icon_path' : React.PropTypes.string.isRequired,
     'title' : React.PropTypes.string.isRequired,
     'path' : React.PropTypes.string.isRequired,

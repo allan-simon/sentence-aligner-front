@@ -2,8 +2,14 @@ import React from 'react';
 import { Router } from 'react-router';
 import Layout from '../layout';
 import Card from '../card';
+import SentencesList from '../sentences_list';
+import SentencesAPI from '../../apis/sentences.jsx';
 
-const AppRouter = ({ history }) => {
+const AppRouter = ({ dispatch, history }) => {
+    const fetch_sentences_list = () => {
+        dispatch(SentencesAPI.actions.list());
+    };
+
     const routes_config = {
         'path' : '/',
         'component' : Layout,
@@ -14,6 +20,11 @@ const AppRouter = ({ history }) => {
             {
                 'path' : 'error',
                 'component' : Card,
+            },
+            {
+                'path' : 'sentences',
+                'onEnter' : fetch_sentences_list,
+                'component' : SentencesList,
             },
             {
                 'path' : '*',
@@ -31,6 +42,7 @@ const AppRouter = ({ history }) => {
 };
 
 AppRouter.propTypes = {
+    'dispatch' : React.PropTypes.func.isRequired,
     'history' : React.PropTypes.object,
 };
 

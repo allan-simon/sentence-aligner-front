@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-    'children' : React.PropTypes.string.isRequired,
+    'children' : React.PropTypes.element.isRequired,
 };
 
 export default CSSModules(Layout, style);

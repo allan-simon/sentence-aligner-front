@@ -13,12 +13,16 @@ import '../index.css';
 import configureStore from './reducers/configure_store';
 import AppRouter from './components/router';
 import menu_reducer from './components/drawer_menu/reducer';
+import SentencesAPI from './apis/sentences';
 
 const initial_state = {};
 const combined_reducers = combineReducers(
     {
         'collapsed_menu' : menu_reducer,
         'routing' : routerReducer,
+        'sentences' : combineReducers({
+            'list' : SentencesAPI.reducers.list,
+        }),
     }
 );
 
