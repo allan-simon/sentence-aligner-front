@@ -30,7 +30,7 @@ const SentencesList = ({ sentences_list }) => {
                                     return (
                                         <tr key={ sentence.id }>
                                             <td>
-                                                <Link to={ "/sentences/" + sentence.id }>
+                                                <Link to={ '/sentences/' + sentence.id }>
                                                     { sentence.text }
                                                 </Link>
                                             </td>
