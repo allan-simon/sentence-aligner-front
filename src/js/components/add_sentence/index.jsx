@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
+import AddSentenceForm from './add_sentence_form';
 import Card from '../card';
 
 const AddSentence = () => {
@@ -11,6 +12,7 @@ const AddSentence = () => {
                 <p>
                     Add Sentence:
                 </p>
+                <AddSentenceForm/>
             </div>
         </Card>
     );
