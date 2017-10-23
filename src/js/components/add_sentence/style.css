@@ -1,0 +1,14 @@
+:root {
+    --white: #F5F5F5;
+    --light-grey: #ECECEC;
+    --grey: #DEDEDE;
+    --dark-grey: #C0C0C0;
+    --black: #212121;
+    --blue: #009FE3;
+    --dark-blue: #0F2639;
+    --card-padding: 32px;
+}
+
+div p {
+    margin-top: 0;
+}

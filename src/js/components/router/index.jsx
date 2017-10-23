@@ -3,6 +3,7 @@ import { Router } from 'react-router';
 import Layout from '../layout';
 import Card from '../card';
 import SentencesList from '../sentences_list';
+import AddSentence from '../add_sentence';
 import OneSentence from '../one_sentence';
 import SentencesAPI from '../../apis/sentences.jsx';
 
@@ -27,6 +28,11 @@ const AppRouter = ({ dispatch, history }) => {
             {
                 'path' : 'error',
                 'component' : Card,
+            },
+            {
+                'path' : 'sentences/create',
+                'component' : AddSentence,
+
             },
             {
                 'path' : 'sentences/:id',
