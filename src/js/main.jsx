@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { combineReducers } from 'redux';
 import { hashHistory } from 'react-router';
+import { reducer as formReducer } from 'redux-form';
 import {
     routerReducer,
     syncHistoryWithStore,
@@ -20,6 +21,7 @@ const combined_reducers = combineReducers(
     {
         'collapsed_menu' : menu_reducer,
         'routing' : routerReducer,
+        'form' : formReducer,
         'sentences' : combineReducers({
             'list' : SentencesAPI.reducers.list,
             'one' : SentencesAPI.reducers.one,
