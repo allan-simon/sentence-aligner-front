@@ -121,7 +121,13 @@ const css_lint = () => {
 
     // define the postcss plugins to use
     const postcss_options = [
-        doiuse({ browsers : [ 'ie >= 9', '> 1%', 'last 2 versions' ] })
+        doiuse({
+            browsers : [
+                'ie > 9',
+                '> 1%',
+                'last 2 versions',
+            ]
+        })
     ];
 
     gulp.src(folders.sources + files.style)
