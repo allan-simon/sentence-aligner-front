@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import Layout from '../layout';
 import Card from '../card';
@@ -60,8 +61,8 @@ const AppRouter = ({ dispatch, history }) => {
 };
 
 AppRouter.propTypes = {
-    'dispatch' : React.PropTypes.func.isRequired,
-    'history' : React.PropTypes.object,
+    'dispatch' : PropTypes.func.isRequired,
+    'history' : PropTypes.object.isRequired,
 };
 
 export default AppRouter;

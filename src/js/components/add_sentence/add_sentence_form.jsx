@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CSSModules from 'react-css-modules';
@@ -36,7 +37,9 @@ const _AddSentenceForm = ({ handle_submit }) => {
     );
 };
 
-_AddSentenceForm.propTypes = { };
+_AddSentenceForm.propTypes = {
+    'handle_submit' : PropTypes.func.isRequired,
+};
 
 const map_state_to_props = () => {
     return { };

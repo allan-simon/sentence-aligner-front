@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import CSSModules from 'react-css-modules';
@@ -35,11 +36,11 @@ const DrawerMenuItem = ({
 };
 
 DrawerMenuItem.propTypes = {
-    'dispatch' : React.PropTypes.func.isRequired,
-    'icon_path' : React.PropTypes.string.isRequired,
-    'title' : React.PropTypes.string.isRequired,
-    'path' : React.PropTypes.string.isRequired,
-    'route_name' : React.PropTypes.string.isRequired,
+    'dispatch' : PropTypes.func.isRequired,
+    'icon_path' : PropTypes.string.isRequired,
+    'title' : PropTypes.string.isRequired,
+    'path' : PropTypes.string.isRequired,
+    'route_name' : PropTypes.string.isRequired,
 };
 
 const map_state_to_props = ({ routing }) => {

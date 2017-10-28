@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
@@ -42,8 +43,8 @@ const DrawerMenu = ({ collapsed_menu, dispatch }) => {
 };
 
 DrawerMenu.propTypes = {
-    'collapsed_menu' : React.PropTypes.bool.isRequired,
-    'dispatch' : React.PropTypes.func.isRequired,
+    'collapsed_menu' : PropTypes.bool.isRequired,
+    'dispatch' : PropTypes.func.isRequired,
 };
 
 const map_state_to_props = ({ collapsed_menu }) => {

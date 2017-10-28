@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
 import TopBar from '../topbar';
@@ -19,7 +20,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-    'children' : React.PropTypes.element.isRequired,
+    'children' : PropTypes.element.isRequired,
 };
 
 export default CSSModules(Layout, style);

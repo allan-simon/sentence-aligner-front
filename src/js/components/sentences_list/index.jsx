@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
@@ -47,7 +48,7 @@ const SentencesList = ({ sentences_list }) => {
 };
 
 SentencesList.propTypes = {
-    'sentences_list' : React.PropTypes.object.isRequired,
+    'sentences_list' : PropTypes.object.isRequired,
 };
 
 const map_state_to_props = ({ sentences }) => {
