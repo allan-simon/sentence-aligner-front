@@ -11,6 +11,15 @@ const Sentences = reduxApi(
         'one' : {
             'url' : `${ API_URL }/sentences/:id`,
         },
+        'create' : {
+            'url' : `${ API_URL }/sentences`,
+            'options' : {
+                'headers' : {
+                    'Content-Type' : 'application/json',
+                },
+                'method' : 'post',
+            },
+        },
     }
 );
 

@@ -3,11 +3,38 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import CSSModules from 'react-css-modules';
+import SentencesAPI from '../../apis/sentences.jsx';
 import style from './style.css';
 
-const _AddSentenceForm = ({ handle_submit }) => {
+const create_sentence = (sentence, resolve, reject, dispatch) => {
+    dispatch(
+        SentencesAPI.actions.create(
+            {},
+            { 'body' : JSON.stringify(sentence) }
+        )
+    ).then(
+        (creation_response) => {
+            console.log(creation_response);
+            resolve();
+        }
+    );
+};
+
+const onSubmit = (sentence, dispatch) => {
+    const promise = new Promise(
+        (resolve, reject) => {
+            dispatch(
+                create_sentence.bind(null, sentence, resolve, reject)
+            );
+        }
+    );
+
+    return promise;
+};
+
+const _AddSentenceForm = ({ handleSubmit }) => {
     return (
-        <form onSubmit={ handle_submit }>
+        <form onSubmit={ handleSubmit }>
             <div>
                 <label htmlFor='content'>Content:</label>
                 <Field
@@ -38,7 +65,7 @@ const _AddSentenceForm = ({ handle_submit }) => {
 };
 
 _AddSentenceForm.propTypes = {
-    'handle_submit' : PropTypes.func.isRequired,
+    'handleSubmit' : PropTypes.func.isRequired,
 };
 
 const map_state_to_props = () => {
@@ -51,5 +78,6 @@ const AddSentenceForm = connect(map_state_to_props)(styled_add_sentence_form);
 
 export default reduxForm({
     'form' : 'sentence_creation',
+    onSubmit,
 })(AddSentenceForm);
 
