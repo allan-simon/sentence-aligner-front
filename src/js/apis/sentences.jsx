@@ -15,11 +15,12 @@ const Sentences = reduxApi(
 );
 
 const adapter_fetch = (url, options) => {
-    const headers = new Headers({
-        'Accept' : 'application/json',
-    });
+    if (options.headers === undefined) {
+        options.headers = new Headers({
+            'Accept' : 'application/json',
+        });
+    }
 
-    options.headers = headers;
     options.mode = 'cors';
 
     const jsonify_response = (response) => {
