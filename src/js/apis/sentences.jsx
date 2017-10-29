@@ -2,6 +2,9 @@ import reduxApi, { transformers } from 'redux-api';
 
 const API_URL = 'http://172.17.0.5';
 
+const HTTP_CREATED = 201;
+const HTTP_CONFLICT = 409;
+
 const Sentences = reduxApi(
     {
         'list' : {
@@ -33,6 +36,14 @@ const adapter_fetch = (url, options) => {
     options.mode = 'cors';
 
     const jsonify_response = (response) => {
+        // we don't jsonify the body if there's no body...
+        if (response.status === HTTP_CREATED ) {
+            return response;
+        }
+        if (response.status === HTTP_CONFLICT ) {
+            return response;
+        }
+
         return response.json();
     };
 

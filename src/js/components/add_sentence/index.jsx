@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
 import AddSentenceForm from './add_sentence_form';
@@ -18,12 +17,6 @@ const AddSentence = () => {
     );
 };
 
-AddSentence.propTypes = { };
-
-const map_state_to_props = () => {
-    return { };
-};
-
 const styled_add_sentence = CSSModules(AddSentence, style);
 
-export default connect(map_state_to_props)(styled_add_sentence);
+export default styled_add_sentence;

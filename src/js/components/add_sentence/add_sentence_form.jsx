@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import {
+    Field,
+    reduxForm,
+    SubmissionError,
+} from 'redux-form';
 import CSSModules from 'react-css-modules';
 import SentencesAPI from '../../apis/sentences.jsx';
 import style from './style.css';
+
+const HTTP_CREATED = 201;
+const HTTP_CONFLICT = 409;
 
 const create_sentence = (sentence, resolve, reject, dispatch) => {
     dispatch(
@@ -14,8 +20,22 @@ const create_sentence = (sentence, resolve, reject, dispatch) => {
         )
     ).then(
         (creation_response) => {
-            console.log(creation_response);
-            resolve();
+            if (creation_response.status === HTTP_CREATED) {
+                resolve();
+            }
+            if (creation_response.status === HTTP_CONFLICT) {
+                reject(creation_response);
+                // TODO: not working as expected for the moment
+                throw new SubmissionError({
+                    '_error' : 'Sentence Already Exists!',
+                });
+            }
+            reject(creation_response);
+        }
+    )
+    .catch(
+        (error) => {
+            reject(error);
         }
     );
 };
@@ -32,13 +52,20 @@ const onSubmit = (sentence, dispatch) => {
     return promise;
 };
 
-const _AddSentenceForm = ({ handleSubmit }) => {
+const AddSentenceForm = ({
+    error,
+    handleSubmit,
+    submitting,
+}) => {
     return (
         <form onSubmit={ handleSubmit }>
             <div>
+                { error }
+            </div>
+            <div>
                 <label htmlFor='content'>Content:</label>
                 <Field
-                    name='content'
+                    name='text'
                     component='input'
                     type='text'
                     required
@@ -58,26 +85,30 @@ const _AddSentenceForm = ({ handleSubmit }) => {
                 </Field>
             </div>
             <div>
-                <button type='submit'>Submit</button>
+                <button
+                    type='submit'
+                    disabled={ submitting }
+                >
+                    Submit
+                </button>
             </div>
         </form>
     );
 };
 
-_AddSentenceForm.propTypes = {
+AddSentenceForm.defaultProps = {
+    'error' : undefined,
+};
+
+AddSentenceForm.propTypes = {
+    'error' : PropTypes.string,
     'handleSubmit' : PropTypes.func.isRequired,
+    'submitting' : PropTypes.bool.isRequired,
 };
 
-const map_state_to_props = () => {
-    return { };
-};
-
-const styled_add_sentence_form = CSSModules(_AddSentenceForm, style);
-
-const AddSentenceForm = connect(map_state_to_props)(styled_add_sentence_form);
+const StyledAddSentenceForm = CSSModules(AddSentenceForm, style);
 
 export default reduxForm({
     'form' : 'sentence_creation',
     onSubmit,
-})(AddSentenceForm);
-
+})(StyledAddSentenceForm);
