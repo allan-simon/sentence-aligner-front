@@ -7,6 +7,31 @@ import style from './style.css';
 import Card from '../card';
 
 const SentencesList = ({ sentences_list }) => {
+    const {
+        loading,
+        error,
+    } = sentences_list;
+
+    if (loading) {
+        return (
+            <Card className={ style.element_root }>
+                <div>
+                    <p>Loading...</p>
+                </div>
+            </Card>
+        );
+    }
+
+    if (error !== null) {
+        return (
+            <Card className={ style.element_root }>
+                <div>
+                    <p>Error while retrieving list</p>
+                </div>
+            </Card>
+        );
+    }
+
     return (
         <Card className={ style.element_root }>
             <div>
