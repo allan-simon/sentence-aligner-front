@@ -12,44 +12,28 @@ import style from './style.css';
 const HTTP_CREATED = 201;
 const HTTP_CONFLICT = 409;
 
-const create_sentence = (sentence, resolve, reject, dispatch) => {
-    dispatch(
+const create_sentence = (sentence, dispatch) => {
+    return dispatch(
         SentencesAPI.actions.create(
             {},
             { 'body' : JSON.stringify(sentence) }
         )
     ).then(
         (creation_response) => {
-            if (creation_response.status === HTTP_CREATED) {
-                resolve();
-            }
-            if (creation_response.status === HTTP_CONFLICT) {
-                reject(creation_response);
-                // TODO: not working as expected for the moment
+            const api_response = creation_response.data;
+            if (api_response.status === HTTP_CONFLICT) {
                 throw new SubmissionError({
                     '_error' : 'Sentence Already Exists!',
                 });
             }
-            reject(creation_response);
         }
     )
-    .catch(
-        (error) => {
-            reject(error);
-        }
-    );
 };
 
 const onSubmit = (sentence, dispatch) => {
-    const promise = new Promise(
-        (resolve, reject) => {
-            dispatch(
-                create_sentence.bind(null, sentence, resolve, reject)
-            );
-        }
+    return dispatch(
+        create_sentence.bind(null, sentence)
     );
-
-    return promise;
 };
 
 const AddSentenceForm = ({
