@@ -9,7 +9,6 @@ import CSSModules from 'react-css-modules';
 import SentencesAPI from '../../apis/sentences.jsx';
 import style from './style.css';
 
-const HTTP_CREATED = 201;
 const HTTP_CONFLICT = 409;
 
 const create_sentence = (sentence, dispatch) => {
@@ -21,13 +20,14 @@ const create_sentence = (sentence, dispatch) => {
     ).then(
         (creation_response) => {
             const api_response = creation_response.data;
+
             if (api_response.status === HTTP_CONFLICT) {
                 throw new SubmissionError({
                     '_error' : 'Sentence Already Exists!',
                 });
             }
         }
-    )
+    );
 };
 
 const onSubmit = (sentence, dispatch) => {
@@ -40,12 +40,20 @@ const AddSentenceForm = ({
     error,
     handleSubmit,
     submitting,
+    submitSucceeded,
 }) => {
+    let flash = null;
+
+    if ( error !== false ) {
+        flash = <div>{ error }</div>;
+    }
+    if ( submitSucceeded ) {
+        flash = <div>Sentence Created !</div>;
+    }
+
     return (
         <form onSubmit={ handleSubmit }>
-            <div>
-                { error }
-            </div>
+            { flash }
             <div>
                 <label htmlFor='content'>Content:</label>
                 <Field
@@ -88,6 +96,7 @@ AddSentenceForm.propTypes = {
     'error' : PropTypes.string,
     'handleSubmit' : PropTypes.func.isRequired,
     'submitting' : PropTypes.bool.isRequired,
+    'submitSucceeded' : PropTypes.bool.isRequired,
 };
 
 const StyledAddSentenceForm = CSSModules(AddSentenceForm, style);
