@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import style from './style.css';
 import Card from '../card';
+import DecomposedSentence from '../decomposed_sentence';
 
 const OneSentence = ({ one_sentence }) => {
     return (
@@ -35,6 +36,7 @@ const OneSentence = ({ one_sentence }) => {
                     </tbody>
                 </table>
             </div>
+            <DecomposedSentence/>
         </Card>
     );
 };
