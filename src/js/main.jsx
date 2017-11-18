@@ -14,6 +14,7 @@ import '../index.css';
 import configureStore from './reducers/configure_store';
 import AppRouter from './components/router';
 import menu_reducer from './components/drawer_menu/reducer';
+import structure_reducer from './components/decomposed_sentence/reducer';
 import SentencesAPI from './apis/sentences';
 
 const initial_state = {};
@@ -26,6 +27,7 @@ const combined_reducers = combineReducers(
             'list' : SentencesAPI.reducers.list,
             'one' : SentencesAPI.reducers.one,
         }),
+        'sentenceStructure' : structure_reducer,
     }
 );
 
