@@ -8,19 +8,18 @@ import Converter from './xml_html_converter';
 
 /**
  *
- * @param {string} group
- * @param {Range}  range
+ * @param {string} group group unique identifier within the sentence
+ * @param {Range}  range range of the selection
  */
-var create_words_group_from_range = (
+const create_words_group_from_range = (
     group,
     range
 ) => {
-    let span = document.createElement('span');
+    const span = document.createElement('span');
 
     span.setAttribute('data-group', group);
     range.surroundContents(span);
 };
-
 
 /**
  * Check if said selection can be used to deliminate a group of words
@@ -31,7 +30,6 @@ var create_words_group_from_range = (
  * @return bool
  */
 const is_valid_selection = (selection) => {
-    console.log(selection);
     return (
         selection.anchorNode === selection.focusNode ||
 
@@ -48,8 +46,11 @@ const is_valid_selection = (selection) => {
  * @return {bool}
  */
 const is_valid_key = ({ keyCode }) => {
+    const KEYBOARD_ZERO = 48;
+    const KEYBOARD_NINE = 57;
+
     // If on digits line of a qwerty keyboard
-    return keyCode >= 48 && keyCode <= 57;
+    return keyCode >= KEYBOARD_ZERO && keyCode <= KEYBOARD_NINE;
 };
 
 /**
@@ -61,16 +62,16 @@ const is_valid_key = ({ keyCode }) => {
  */
 const get_group_from_key = ({ keyCode }) => {
     return {
-        48 : '0',
-        49 : '1',
-        50 : '2',
-        51 : '3',
-        52 : '4',
-        53 : '5',
-        54 : '6',
-        55 : '7',
-        56 : '8',
-        57 : '9',
+        '48' : '0',
+        '49' : '1',
+        '50' : '2',
+        '51' : '3',
+        '52' : '4',
+        '53' : '5',
+        '54' : '6',
+        '55' : '7',
+        '56' : '8',
+        '57' : '9',
     }[ keyCode ];
 };
 
@@ -94,20 +95,20 @@ const key_up_handler = ( dispatch, event ) => {
         range
     );
 
-    let sentenceDiv = event.currentTarget;
-
+    const sentenceDiv = event.currentTarget;
     const action = {
-        'type': Actions.GROUP_CREATED,
-        'sentenceDiv': sentenceDiv,
-    }
+        'type' : Actions.GROUP_CREATED,
+        'sentenceDiv' : sentenceDiv,
+    };
+
     dispatch(action);
 };
 
 const DecomposedSentence = ({ one_sentence, sentenceXML, dispatch }) => {
-
     let sentenceBlocks = one_sentence.text;
+
     if (sentenceXML !== undefined && sentenceXML !== null) {
-        let sentenceBlocks = Converter.create_HTML_from_XML(sentenceXML);
+        sentenceBlocks = Converter.create_HTML_from_XML(sentenceXML);
     }
 
     const sentenceStructure = React.createElement(
@@ -142,6 +143,8 @@ const DecomposedSentence = ({ one_sentence, sentenceXML, dispatch }) => {
 
 DecomposedSentence.propTypes = {
     'one_sentence' : PropTypes.object.isRequired,
+    'sentenceXML' : PropTypes.object.isRequired,
+    'dispatch' : PropTypes.function.isRequired,
 };
 
 const map_state_to_props = ({
@@ -155,4 +158,5 @@ const map_state_to_props = ({
 };
 
 const StyledComponent = CSSModules(DecomposedSentence, style);
+
 export default connect(map_state_to_props)(StyledComponent);
