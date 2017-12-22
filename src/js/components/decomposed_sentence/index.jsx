@@ -144,7 +144,7 @@ const DecomposedSentence = ({ one_sentence, sentenceXML, dispatch }) => {
 DecomposedSentence.propTypes = {
     'one_sentence' : PropTypes.object.isRequired,
     'sentenceXML' : PropTypes.object.isRequired,
-    'dispatch' : PropTypes.function.isRequired,
+    'dispatch' : PropTypes.func.isRequired,
 };
 
 const map_state_to_props = ({
