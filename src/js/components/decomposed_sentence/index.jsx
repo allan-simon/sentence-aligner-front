@@ -105,10 +105,13 @@ const key_up_handler = ( dispatch, event ) => {
 };
 
 const DecomposedSentence = ({ one_sentence, sentenceXML, dispatch }) => {
+    // If there's not yet a structure defined we use the raw text
     let sentenceBlocks = one_sentence.text;
+    let sentenceXMLobj = null;
 
-    if (sentenceXML !== undefined && sentenceXML !== null) {
-        sentenceBlocks = Converter.create_HTML_from_XML(sentenceXML);
+    if (sentenceXML !== null) {
+        sentenceXMLobj = (new window.DOMParser()).parseFromString(sentenceXML, 'text/xml');
+        sentenceBlocks = Converter.create_HTML_from_XML(sentenceXMLobj);
     }
 
     const sentenceStructure = React.createElement(
@@ -143,8 +146,12 @@ const DecomposedSentence = ({ one_sentence, sentenceXML, dispatch }) => {
 
 DecomposedSentence.propTypes = {
     'one_sentence' : PropTypes.object.isRequired,
-    'sentenceXML' : PropTypes.object.isRequired,
+    'sentenceXML' : PropTypes.string,
     'dispatch' : PropTypes.func.isRequired,
+};
+
+DecomposedSentence.defaultProps = {
+    'sentenceXML' : null,
 };
 
 const map_state_to_props = ({

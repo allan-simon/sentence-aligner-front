@@ -9,12 +9,14 @@ const sentence_structure_reducer = (state, action) => {
     if (action.type !== Actions.GROUP_CREATED) {
         return state;
     }
-    const sentenceDiv = action.sentenceDiv;
+    const { sentenceDiv } = action;
 
-    return Converter.create_XML_from_HTML(
+    const xml = Converter.create_XML_from_HTML(
         sentenceDiv.childNodes[ 0 ],
         document.createElement('structure')
     );
+
+    return new XMLSerializer().serializeToString(xml);
 };
 
 export default sentence_structure_reducer;

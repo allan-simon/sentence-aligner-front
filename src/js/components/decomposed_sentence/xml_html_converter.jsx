@@ -43,8 +43,17 @@ const create_HTML_from_XML = (xmlBlock) => {
             continue;
         }
         const dataset = _attribute_to_dataset(node.attributes);
+
+        // Needed for react's internal
+        // Otherwise it complains the `key` attribute is missing
+        dataset.key = i;
+
         const childrenComponents = create_HTML_from_XML(node);
-        const span = React.createElement('span', dataset, childrenComponents);
+        const span = React.createElement(
+            'span',
+            dataset,
+            childrenComponents
+        );
 
         componentChildren.push(span);
     }
@@ -94,6 +103,13 @@ const create_XML_from_HTML = function (span, xmlDest) {
 
     for (let i = 0; i < nodes.length; i++) {
         const node = nodes[ i ];
+
+        // Happens because reactjs, as of december 2017,
+        // Put html comments in the DOM to keep track of its
+        // Internal state
+        if (node.nodeType === Node.COMMENT_NODE) {
+            continue;
+        }
 
         if (node.tagName === undefined) {
             const textNode = document.createTextNode(node.textContent);
